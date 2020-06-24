@@ -8,4 +8,6 @@ nav:
     - Amazon: amazon.md
     - Google: google.md
 
-google_analytics: ['UA-170694225-1', 'faangcode']
+google_analytics:
+  - UA-170694225-1
+  - auto

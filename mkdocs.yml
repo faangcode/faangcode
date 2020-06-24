@@ -1,0 +1,9 @@
+site_name: FAANG CODE
+
+theme:
+  name: 'slate'
+
+nav:
+    - Intro: index.md
+    - Amazon: amazon.md
+    - Google: google.md

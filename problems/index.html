@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Google - FAANG CODE</title>
+        <title>Problems - FAANG CODE</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -58,14 +58,14 @@
                             <li >
                                 <a href="..">Intro</a>
                             </li>
-                            <li >
-                                <a href="../problems/">Problems</a>
+                            <li class="active">
+                                <a href="./">Problems</a>
                             </li>
                             <li >
                                 <a href="../amazon/">Amazon</a>
                             </li>
-                            <li class="active">
-                                <a href="./">Google</a>
+                            <li >
+                                <a href="../google/">Google</a>
                             </li>
                         </ul>
 
@@ -76,12 +76,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../amazon/">
+                                <a rel="next" href="..">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../amazon/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -93,12 +93,81 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#working-on-it">Working on it...</a></li>
+        <li class="main active"><a href="#binary-tree-level-order-traversal">  Binary Tree Level Order Traversal </a></li>
+        <li class="main "><a href="#same-tree">  Same Tree </a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h3 id="working-on-it">Working on it...</h3></div>
+<h4 id="binary-tree-level-order-traversal"><b>  <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">Binary Tree Level Order Traversal</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python"># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def levelOrder(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        &quot;&quot;&quot;
+        result = []
+        current_level = [root]
+
+        if not root:
+            return []
+
+        while current_level:
+            result.append([node.val for node in current_level])
+            next_level = []
+            for node in current_level:
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+
+            current_level = next_level
+
+        return result
+</code></pre>
+
+</details>
+
+<h4 id="same-tree"><b>  <a href="https://leetcode.com/problems/same-tree/">Same Tree</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python"># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSameTree(self, p, q):
+        &quot;&quot;&quot;
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        &quot;&quot;&quot;
+        if not p and not q:
+            return True
+
+        if not p or not q:
+            return False
+
+        if p.val != q.val:
+            return False
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+</code></pre>
+
+</details></div>
         </div>
 
         <footer class="col-md-12">

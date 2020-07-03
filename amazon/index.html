@@ -136,12 +136,15 @@
 <p><details>
 <summary>Solution</summary></p>
 <pre><code class="python">class Solution:
-    def numIslands(self, grid: List[List[str]]) -&gt; int:
-        count=0 #to count number of islands
+    def numIslands(self, grid):
+        count=0
+
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j]=='1':
                     self.dfs(grid, i, j)
+                    count=count+1
+
         return count
 
     def dfs(self, grid, i, j):
@@ -414,20 +417,25 @@ class Solution(object):
 <summary>Solution</summary></p>
 <pre><code class="python">class Solution(object):
     def kClosest(self, points, K):
-        import math, itertools
         &quot;&quot;&quot;
         :type points: List[List[int]]
         :type K: int
         :rtype: List[List[int]]
         &quot;&quot;&quot;
+        import math
+
         d = {}
+        result = []
 
         for x,y in points:
-            distance = math.sqrt(x**2 + y**2)
-            d[(x,y)] = distance
-        sorted_d =  sorted(d.items(), key=lambda x: x[1])
-        result = [[x,y] for x,y in (dict(itertools.islice(sorted_d, K)))]
-        return result
+            d[x,y]  = sqrt(x**2 + y**2)
+
+        sorted_d = sorted(d.items(), key=lambda x: x[1])
+
+        for x,y in sorted_d:
+            result.append(list(x))
+
+        return result[:K]
 </code></pre>
 
 </details>

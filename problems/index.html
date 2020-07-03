@@ -93,11 +93,98 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#binary-tree-level-order-traversal">  Binary Tree Level Order Traversal </a></li>
+        <li class="main active"><a href="#valid-palindrome">  Valid Palindrome </a></li>
+        <li class="main "><a href="#binary-search-tree">  Binary Search Tree </a></li>
         <li class="main "><a href="#same-tree">  Same Tree </a></li>
+        <li class="main "><a href="#binary-tree-level-order-traversal">  Binary Tree Level Order Traversal </a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
+
+<h4 id="valid-palindrome"><b>  <a href="https://leetcode.com/problems/valid-palindrome/">Valid Palindrome</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python">class Solution(object):
+    def isPalindrome(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: bool
+        &quot;&quot;&quot;
+        from string import digits, ascii_lowercase
+
+        chars = digits + ascii_lowercase
+
+        _s = [c for c in s.lower() if c in chars]
+        return _s[::-1] == _s
+
+</code></pre>
+
+</details>
+
+<h4 id="binary-search-tree"><b>  <a href="https://leetcode.com/problems/search-in-a-binary-search-tree/">Binary Search Tree</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python"># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def searchBST(self, root, val):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :type val: int
+        :rtype: TreeNode
+        &quot;&quot;&quot;
+
+        if root is None:
+            return []
+
+        elif root.val == val:
+            return root
+        elif val &lt; root.val:
+            return self.searchBST(root.left, val)
+        elif val &gt; root.val:
+            return self.searchBST(root.right, val)
+</code></pre>
+
+</details>
+
+<h4 id="same-tree"><b>  <a href="https://leetcode.com/problems/same-tree/">Same Tree</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python"># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSameTree(self, p, q):
+        &quot;&quot;&quot;
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        &quot;&quot;&quot;
+        if not p and not q:
+            return True
+
+        if not p or not q:
+            return False
+
+        if p.val != q.val:
+            return False
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+</code></pre>
+
+</details>
 
 <h4 id="binary-tree-level-order-traversal"><b>  <a href="https://leetcode.com/problems/binary-tree-level-order-traversal/">Binary Tree Level Order Traversal</a> </b></h4>
 <details>
@@ -133,38 +220,6 @@ class Solution(object):
             current_level = next_level
 
         return result
-</code></pre>
-
-</details>
-
-<h4 id="same-tree"><b>  <a href="https://leetcode.com/problems/same-tree/">Same Tree</a> </b></h4>
-<details>
-<summary>Solution</summary>
-
-<pre><code class="python"># Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution(object):
-    def isSameTree(self, p, q):
-        &quot;&quot;&quot;
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: bool
-        &quot;&quot;&quot;
-        if not p and not q:
-            return True
-
-        if not p or not q:
-            return False
-
-        if p.val != q.val:
-            return False
-
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 </code></pre>
 
 </details></div>

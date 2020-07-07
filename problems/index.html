@@ -64,9 +64,6 @@
                             <li >
                                 <a href="../amazon/">Amazon</a>
                             </li>
-                            <li >
-                                <a href="../google/">Google</a>
-                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -97,6 +94,7 @@
         <li class="main "><a href="#binary-search-tree">  Binary Search Tree </a></li>
         <li class="main "><a href="#same-tree">  Same Tree </a></li>
         <li class="main "><a href="#binary-tree-level-order-traversal">  Binary Tree Level Order Traversal </a></li>
+        <li class="main "><a href="#validate-binary-search-tree">  Validate Binary Search Tree </a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -221,6 +219,46 @@ class Solution(object):
 
         return result
 </code></pre>
+
+</details>
+
+<h4 id="validate-binary-search-tree"><b>  <a href="https://leetcode.com/problems/validate-binary-search-tree/">Validate Binary Search Tree</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python"># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def isValidBST(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: bool
+        &quot;&quot;&quot;
+        return self.is_valid(root, float(&quot;-inf&quot;), float(&quot;inf&quot;))
+
+    def is_valid(self, root, min, max):
+        if root is None:
+            return True
+
+        if root.val &lt;= min or root.val &gt;= max:
+            return False
+
+        return self.is_valid(root.left, min, root.val) and self.is_valid(root.right, root.val, max)
+</code></pre>
+
+</details>
+
+<details>
+<summary>Time & Space Complexity</summary>
+
+<pre><code>* Time Complexity: O(N)
+* Space Complexity: O(N)
+</code></pre>
+
 
 </details></div>
         </div>

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Google - FAANG CODE</title>
+        <title>Data Structures & Alogrithms - FAANG CODE</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -61,8 +61,8 @@
                             <li >
                                 <a href="../problems/">Problems</a>
                             </li>
-                            <li >
-                                <a href="../algo/">Data Structures & Alogrithms</a>
+                            <li class="active">
+                                <a href="./">Data Structures & Alogrithms</a>
                             </li>
                             <li >
                                 <a href="../amazon/">Amazon</a>
@@ -75,6 +75,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../problems/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../amazon/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -83,12 +93,37 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#working-on-it">Working on it...</a></li>
+        <li class="main active"><a href="#implementing-a-stack">  Implementing a Stack </a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h3 id="working-on-it">Working on it...</h3></div>
+<h4 id="implementing-a-stack"><b>  Implementing a Stack </b></h4>
+<details>
+<summary>View Code</summary>
+
+<pre><code class="python">class Stack:
+     def __init__(self):
+         self.items = []
+
+     def isEmpty(self):
+         return self.items == []
+
+     def push(self, item):
+         self.items.append(item)
+
+     def pop(self):
+         return self.items.pop()
+
+     def peek(self):
+         return self.items[len(self.items)-1]
+
+     def size(self):
+         return len(self.items)
+
+</code></pre>
+
+</details></div>
         </div>
 
         <footer class="col-md-12">

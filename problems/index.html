@@ -62,6 +62,9 @@
                                 <a href="./">Problems</a>
                             </li>
                             <li >
+                                <a href="../algo/">Data Structures & Alogrithms</a>
+                            </li>
+                            <li >
                                 <a href="../amazon/">Amazon</a>
                             </li>
                         </ul>
@@ -78,7 +81,7 @@
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../amazon/">
+                                <a rel="prev" href="../algo/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -90,14 +93,52 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#valid-palindrome">  Valid Palindrome </a></li>
+        <li class="main active"><a href="#roman-to-integer">  Roman to Integer </a></li>
+        <li class="main "><a href="#valid-palindrome">  Valid Palindrome </a></li>
         <li class="main "><a href="#binary-search-tree">  Binary Search Tree </a></li>
         <li class="main "><a href="#same-tree">  Same Tree </a></li>
         <li class="main "><a href="#binary-tree-level-order-traversal">  Binary Tree Level Order Traversal </a></li>
         <li class="main "><a href="#validate-binary-search-tree">  Validate Binary Search Tree </a></li>
+        <li class="main "><a href="#reverse-linked-list">  Reverse Linked List </a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
+
+<h4 id="roman-to-integer"><b>  <a href="https://leetcode.com/problems/roman-to-integer/submissions/">Roman to Integer</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python">class Solution(object):
+    def romanToInt(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: int
+        &quot;&quot;&quot;
+        roman_num = {'I': 1,
+                     'V': 5,
+                     'X': 10,
+                     'L': 50,
+                     'C': 100,
+                     'D': 500,
+                     'M':1000}
+
+        if s is None:
+            return 0
+
+        number = 0
+
+        for i in range(len(s) -1):
+            if roman_num[s[i]] &lt; roman_num[s[i+1]]:
+                number -= roman_num[s[i]]
+            else:
+                number += roman_num[s[i]]
+
+        number += roman_num[s[-1]]
+
+        return number
+</code></pre>
+
+</details>
 
 <h4 id="valid-palindrome"><b>  <a href="https://leetcode.com/problems/valid-palindrome/">Valid Palindrome</a> </b></h4>
 <details>
@@ -260,7 +301,37 @@ class Solution(object):
 </code></pre>
 
 
-</details></div>
+</details>
+
+<h4 id="reverse-linked-list"><b>  <a href="https://leetcode.com/problems/reverse-linked-list/">Reverse Linked List</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python"># Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        &quot;&quot;&quot;
+        :type head: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+        prev = None
+
+        while head:
+            tmp = head
+            head = head.next
+            tmp.next = prev
+            prev = tmp
+
+        return prev
+</code></pre>
+
+</details>
+
+<details></div>
         </div>
 
         <footer class="col-md-12">

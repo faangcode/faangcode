@@ -130,6 +130,44 @@
 
 <h4 id="top-n-competitorsbuzzwords"><b> Top N Competitors/Buzzwords </b></h4>
 <h4 id="zombie-in-matrix-aka-min-hours-to-send-file-to-all-available-serversp"><b> Zombie in Matrix aka Min hours to send file to all available serversp </b></h4>
+<p><details>
+<summary>Solution</summary></p>
+<pre><code class="python">class Solution(object):
+    def orangesRotting(self, grid):
+        rotten_oranges = []
+        fresh_count = 0
+
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                if grid[row][col] == 2:
+                    rotten_oranges.append([row,col])
+                if grid[row][col] == 1:
+                    fresh_count += 1
+        time = 0
+        directions =[[1,0],[-1,0],[0,1],[0,-1]]
+
+        while True:
+            new = []
+            for row,col in rotten_oranges:
+                for direction in directions:
+                    next_row = direction[0] + row
+                    next_col = direction[1] + col
+                    if next_row &lt; len(grid) and next_row &gt;=0 and next_col &lt; len(grid[0]) and next_col &gt;=0:
+                         if grid[next_row][next_col] == 1:
+                            grid[next_row][next_col] = 2
+                            fresh_count -= 1
+                            new.append([next_row,next_col])
+            rotten_oranges = new
+            if not rotten_oranges:
+                break
+            time += 1
+
+        return  time if fresh_count == 0 else -1
+
+</code></pre>
+
+</details>
+
 <h4 id="critical-routers"><b> Critical Routers </b></h4>
 <h4 id="product-suggestions"><b> Product Suggestions  </b></h4>
 <h4 id="number-of-clusters"><b> <a href="https://leetcode.com/problems/number-of-islands/">Number of Clusters</a> </b></h4>
@@ -267,41 +305,33 @@ def solution(ropes):
 <h4 id="merge-two-sorted-lists"><b> Merge Two Sorted Lists </b></h4>
 <p><details>
 <summary>Solution</summary></p>
-<pre><code class="python">class Solution:
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:
-        if not l1 and not l2:
-            return None
-
-        if not l1 and l2:
-            return l2
-
-        if not l2 and l1:
-            return l1
-
-        if l1.val &lt;= l2.val:
-            l3 = ListNode(l1.val)
-            l1 = l1.next
-        else:
-            l3 = ListNode(l2.val)
-            l2 = l2.next
-        head = l3
+<pre><code class="python"># Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        &quot;&quot;&quot;
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+        dummy = ListNode(-1)
+        head = dummy
 
         while l1 and l2:
             if l1.val &lt;= l2.val:
-                l3.next = l1
+                head.next = l1
                 l1 = l1.next
             else:
-                l3.next = l2
+                head.next = l2
                 l2 = l2.next
-            l3 = l3.next
+            head= head.next
 
-        if l1:
-            l3.next = l1
-        else:
-            l3.next = l2
+        head.next = l1 or l2    # one of l1 and l2 can be non-null
 
-    return head
-
+        return dummy.next
 </code></pre>
 
 </details>
@@ -445,6 +475,35 @@ class Solution(object):
 <h4 id="min-cost-to-repair-edges-mst"><b> Min Cost to Repair Edges (MST) </b></h4>
 <h4 id="prison-cells-after-n-days"><b> Prison Cells After N Days </b></h4>
 <h4 id="partition-labels"><b> Partition Labels </b></h4>
+<p><details>
+<summary>Solution</summary></p>
+<pre><code class="python">class Solution(object):
+    def partitionLabels(self, S):
+        &quot;&quot;&quot;
+        :type S: str
+        :rtype: List[int]
+        &quot;&quot;&quot;
+        if not S:
+            return []
+        start = 0
+        end = 0
+        res = []
+        mapping = {char : index for index, char in enumerate(S)}
+        for i in range(len(S)):
+            temp_end = mapping[S[i]]
+            if temp_end &gt; end:
+                if i &gt; end:
+                    res.append(end - start + 1)
+                    start = i
+                end = temp_end
+        res.append(end - start + 1)
+
+        return res
+
+</code></pre>
+
+</details>
+
 <h4 id="subtree-with-maximum-average"><b> Subtree with Maximum Average </b></h4></div>
         </div>
 

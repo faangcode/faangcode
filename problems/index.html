@@ -96,6 +96,7 @@
         <li class="main active"><a href="#roman-to-integer">  Roman to Integer </a></li>
         <li class="main "><a href="#valid-palindrome">  Valid Palindrome </a></li>
         <li class="main "><a href="#binary-search-tree">  Binary Search Tree </a></li>
+        <li class="main "><a href="#invert-binary-tree">  Invert Binary Tree </a></li>
         <li class="main "><a href="#same-tree">  Same Tree </a></li>
         <li class="main "><a href="#binary-tree-level-order-traversal">  Binary Tree Level Order Traversal </a></li>
         <li class="main "><a href="#validate-binary-search-tree">  Validate Binary Search Tree </a></li>
@@ -189,6 +190,34 @@ class Solution(object):
             return self.searchBST(root.left, val)
         elif val &gt; root.val:
             return self.searchBST(root.right, val)
+</code></pre>
+
+</details>
+
+<h4 id="invert-binary-tree"><b>  <a href="https://leetcode.com/problems/invert-binary-tree/">Invert Binary Tree</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python">class Solution(object):
+    def invertTree(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: TreeNode
+        &quot;&quot;&quot;
+
+
+        if root is None:
+            return root
+
+        tmp = root.left
+
+        root.left = root.right
+        root.right = tmp
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
 </code></pre>
 
 </details>

@@ -94,6 +94,8 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#get-all-substrings-of-given-string"> Get all substrings of given string </a></li>
+        <li class="main "><a href="#best-time-to-buy-and-sell-stock">  Best Time to Buy and Sell Stock </a></li>
+        <li class="main "><a href="#implement-strstr">  Implement strStr() </a></li>
         <li class="main "><a href="#roman-to-integer">  Roman to Integer </a></li>
         <li class="main "><a href="#valid-palindrome">  Valid Palindrome </a></li>
         <li class="main "><a href="#binary-search-tree">  Binary Search Tree </a></li>
@@ -106,7 +108,6 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>Get all substrings of given string</p>
 <h4 id="get-all-substrings-of-given-string"><b> Get all substrings of given string </b></h4>
 <details>
 <summary>Solution</summary>
@@ -116,6 +117,52 @@
         for i in range(len(s)):
             for j in range(i+1,len(s)+1):
         return s[i:j]
+</code></pre>
+
+</details>
+
+<h4 id="best-time-to-buy-and-sell-stock"><b>  <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">Best Time to Buy and Sell Stock</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python">class Solution(object):
+    def maxProfit(self, prices):
+        &quot;&quot;&quot;
+        :type prices: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+
+        max_profit = 0
+        min_current_price = float(&quot;inf&quot;)
+
+        for p in prices:
+            min_current_price = min(min_current_price, p)
+            current_profit = p - min_current_price
+            max_profit = max(max_profit, current_profit)
+        return max_profit
+</code></pre>
+
+</details>
+
+<h4 id="implement-strstr"><b>  <a href="https://leetcode.com/problems/implement-strstr/">Implement strStr()</a> </b></h4>
+<details>
+<summary>Solution</summary>
+
+<pre><code class="python">class Solution(object):
+    def strStr(self, haystack, needle):
+        &quot;&quot;&quot;
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        &quot;&quot;&quot;
+
+        if needle == &quot;&quot;:
+            return 0
+
+        for i in range(len(haystack)):
+            if haystack[i:i+len(needle)] == needle:
+                return i
+        return -1
 </code></pre>
 
 </details>
